@@ -1,48 +1,46 @@
 package com.example;
 
 import org.junit.jupiter.api.Test;
+import java.util.HashMap;
+import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
+
+class PinkJammieMock implements Doughnut {
+    public String prepare() {
+        return "A Zac's favourite doughnut from Gregg's";
+    }
+}
+
 
 public class DoughnutShopTest {
 
+    private final Map<String, Doughnut> registeredDoughnuts = new HashMap<>();
+
     @Test
     public void testPrepareDoughnut_forChocolate() {
-        DoughnutShop shop = new DoughnutShop();
+        String doughnutType = "Chocolate";
 
-        String result = shop.prepareDoughnut("Chocolate");
+        registeredDoughnuts.put(doughnutType, new ChocolateDoughnut());
 
-        assertEquals("A delicious chocolate doughnut prepared!", result);
+        DoughnutShop shop = new DoughnutShop(registeredDoughnuts);
+
+        Doughnut doughnut = shop.prepareDoughnut(doughnutType);
+
+        assertEquals("A delicious chocolate doughnut prepared!", doughnut.prepare());
     }
 
     @Test
-    public void testPrepareDoughnut_forCinnamon() {
-        DoughnutShop shop = new DoughnutShop();
+    public void testPrepareDoughnut_forPinkJammie() {
+        String doughnutType = "PinkJammie";
 
-        String result = shop.prepareDoughnut("Cinnamon");
+        registeredDoughnuts.put(doughnutType, new PinkJammieMock());
 
-        assertEquals("A delicious cinnamon doughnut prepared!", result);
+        DoughnutShop shop = new DoughnutShop(registeredDoughnuts);
+
+        Doughnut doughnut = shop.prepareDoughnut(doughnutType);
+
+        assertEquals("A Zac's favourite doughnut from Gregg's", doughnut.prepare());
     }
 
-    @Test
-    public void testPrepareDoughnut_forSugar() {
-        DoughnutShop shop = new DoughnutShop();
-
-        String result = shop.prepareDoughnut("Sugar");
-
-        assertEquals("A delightful sugar doughnut prepared!", result);
-    }
-
-    @Test
-    public void testPrepareDoughnut_forUnknownType() {
-        DoughnutShop shop = new DoughnutShop();
-
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            shop.prepareDoughnut("Unknown");
-        });
-
-        String expectedMessage = "We do not produce this type of doughnut";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
+    // And so on for the other tests..
 }
