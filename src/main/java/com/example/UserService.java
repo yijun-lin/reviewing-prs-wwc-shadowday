@@ -3,27 +3,27 @@ package com.example;
 import java.util.List;
 
 public class UserService {
-    private List<String> users;
+    private List<String> userList;
 
     // Constructor injection
-    public UserService(List<String> users) {
-        this.users = users;
+    public UserService(List<String> userList) {
+        this.userList = userList;
     }
 
     // Rest of the code...
 
-    public boolean isUserExists(String userName) {
-        boolean f = false;
+    public boolean doesUserExist(String userName) {
+        boolean doesExist = false;
 
-        for (int index = 0; index < users.size(); index++) {
-            String user = users.get(index);
+        for (int index = 0; index < userList.size(); index++) {
+            String user = userList.get(index);
 
             if (userName.equals(user)) {
-                f = true;
+                doesExist = true;
                 break;
             }
         }
 
-        return f;
+        return doesExist;
     }
 }
