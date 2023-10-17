@@ -2,7 +2,7 @@ package com.example;
 
 import java.util.List;
 
-public class userService {
+public class UserService {
     private List<String> users;
 
     // Constructor injection
