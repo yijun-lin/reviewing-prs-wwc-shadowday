@@ -3,21 +3,15 @@ package com.example;
 public class Player {
     private String name;
     private int uniformNumber;
+    private PrintService printService;
 
-    public Player(String name, int uniformNumber) {
+    public Player(String name, int uniformNumber, PrintService printService) {
         this.name = name;
         this.uniformNumber = uniformNumber;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getUniformNumber() {
-        return uniformNumber;
+        this.printService = printService;
     }
 
     public void play() {
-        System.out.println(name + " is playing");
+        printService.print(name + " is playing");
     }
 }

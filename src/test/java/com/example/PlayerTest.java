@@ -2,21 +2,20 @@ package com.example;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayerTest {
 
     @Test
     public void testPlayMethod() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
+        PrintService printService = new PrintService() {
+            @Override
+            public void print(String message) {
+                assertEquals("John is playing", message);
+            }
+        };
 
-        Player player = new Player("John", 7);
+        Player player = new Player("John", 7, printService);
         player.play();
-
-        assertEquals("John is playing\n", output.toString());
     }
 }
