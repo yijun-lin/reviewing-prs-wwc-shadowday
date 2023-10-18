@@ -1,5 +1,10 @@
+import com.example.SuperHero;
+import com.example.Superman;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        SuperHero hero = new Superman("Clark Kent");
+
+        ((Superman)hero).teachAboutSolarPower();
     }
 }
