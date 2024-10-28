@@ -11,7 +11,12 @@ class TeamTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
 
-        Team team = new Team();
+        Player player1 = new Player("John", 7);
+        Player player2 = new Player("Michael", 9);
+        Player player3 = new Player("David", 10);
+        Player[] players = {player1, player2, player3};
+
+        Team team = new Team(players);
         team.startMatch();
 
         String expectedOutput = "John is playing\nMichael is playing\nDavid is playing\n";
