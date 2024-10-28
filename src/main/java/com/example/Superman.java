@@ -11,7 +11,8 @@ public class Superman extends SuperHero {
         System.out.println("Superman is saving the world.");
     }
 
-    public void teachAboutSolarPower() {
-        System.out.println("Superman is teaching the world about solar power.");
+    @Override
+    public void fly() {
+        System.out.println("Superman is flying at the speed of light.");
     }
 }

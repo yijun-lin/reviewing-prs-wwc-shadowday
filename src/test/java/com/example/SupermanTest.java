@@ -1,3 +1,4 @@
+// src/test/java/com/example/SupermanTest.java
 package com.example;
 
 import org.junit.jupiter.api.Test;
@@ -8,25 +9,15 @@ class SupermanTest {
     @Test
     void testSaveTheWorld() {
         Superman superman = new Superman("Clark Kent");
-
         assertNotNull(superman);
-
         assertEquals(superman.getClass(), Superman.class);
+        superman.saveTheWorld();
     }
 
     @Test
-    void testTeachAboutSolarPower() {
-        Superman superman = new Superman("Clark Kent");assertNotNull(superman);
-
-        superman.teachAboutSolarPower();
-    }
-
-    @Test
-    void testSuperHeroReplacedWithSuperman() {
-        SuperHero hero = new SuperHero("Generic Hero");
-
-        assertThrows(ClassCastException.class, () -> {
-            ((Superman)hero).teachAboutSolarPower();
-        });
+    void testFly() {
+        Superman superman = new Superman("Clark Kent");
+        assertNotNull(superman);
+        superman.fly();
     }
 }

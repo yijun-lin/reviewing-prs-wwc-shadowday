@@ -11,4 +11,8 @@ public class SuperHero {
     public void saveTheWorld() {
         System.out.println(this.name + " is saving the world.");
     }
+
+    public void fly() {
+        System.out.println(this.name + " is flying.");
+    }
 }
