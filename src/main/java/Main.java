@@ -3,7 +3,7 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
-        // This is just to test copilot working as exoected
+        // This is just to test copilot working as expected
         String userInput = args.length > 0 ? args[0] : "admin";
         String query = "SELECT * FROM users WHERE username = '" + userInput + "'";
         
